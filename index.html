@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head>
+    <script src="p5.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="p5.play.js"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    
+
+
+  </head>
+  <body>
+      <script src="sketch.js"></script>
+      <script>
+        var audio, playbtn, mutebtn, seekslider, volumeslider, seeking=false, seekto;
+        function initAudioPlayer(){
+          audio = new Audio();
+          audio.src = "Sound/story.mp3";
+          audio.loop = true;
+          audio.play();
+          // Set object references
+          playbtn = document.getElementById("playpausebtn");
+          mutebtn = document.getElementById("mutebtn");
+          seekslider = document.getElementById("seekslider");
+          volumeslider = document.getElementById("volumeslider");
+       
+          // Functions
+          function playPause(){
+            if(audio.paused){
+                audio.play();
+                playbtn.style.background = "url(pauseButton.png) no-repeat center/100%";
+              } else {
+                audio.pause();
+                playbtn.style.background = "url(playSound.png) no-repeat center/100%";
+              }
+          }
+          function mute(){
+            if(audio.muted){
+                audio.muted = false;
+                mutebtn.style.background = "url(speaker.jpg) no-repeat center/100%";
+              } else {
+                audio.muted = true;
+                mutebtn.style.background = "url(speaker_muted.jpg) no-repeat center/100%";
+              }
+          }
+             // Add Event Handling
+          playbtn.addEventListener("click", playPause);
+          mutebtn.addEventListener("click", mute);
+          seekslider.addEventListener("mousedown", function(event){ seeking=true; seek(event); });
+          seekslider.addEventListener("mousemove", function(event){ seek(event); });
+          seekslider.addEventListener("mouseup",function(){ seeking=false; });
+          volumeslider.addEventListener("mousemove", setvolume);
+  
+          function seek(event){
+              if(seeking){
+                seekslider.value = event.clientX - seekslider.offsetLeft;
+                  seekto = audio.duration * (seekslider.value / 100);
+                  audio.currentTime = seekto;
+              }
+            }
+          function setvolume(){
+              audio.volume = volumeslider.value / 100;
+            }
+        }
+        window.addEventListener("load", initAudioPlayer);
+        </script> 
+  
+  <button id="playpausebtn"></button>
+  <input id="seekslider" type="range" min="0" max="100" value="0" step="1">
+  <button id="mutebtn"></button>
+  <input id="volumeslider" type="range" min="0" max="100" value="100" step="1">
+      
+</body></html>

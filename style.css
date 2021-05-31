@@ -1,0 +1,87 @@
+
+  canvas {
+    display: block;
+
+  }
+
+  html, body{ margin: 0;
+     }
+
+
+      button{ border:none; cursor:pointer; outline:none; }
+      input{ outline:none; }
+
+      button#playpausebtn{
+        background:url(pauseButton.png) no-repeat;
+        width:40px; 
+        height:40px; 
+        border: 0;
+        background-size: 100%; 
+        background-size: 40px ;
+      }
+      button#playbtn{
+        background:url(playSound.png) no-repeat;
+        width:40px; 
+        height:40px; 
+        border: 0;
+        background-size: 100%; 
+        background-size: 40px ;
+      }
+
+
+      button#mutebtn{
+        background:url(speaker.jpg) no-repeat;
+        width:40px; 
+        height:40px; 
+        border: 0;
+        background-size: 100%; 
+        background-size: 40px ;
+      }
+      input#seekslider{
+        width:100px;
+      }
+      input#volumeslider{
+        width: 70px;
+      }
+      input[type='range'] {
+          -webkit-appearance: none !important;
+        margin:0px;
+        padding:0px;
+          background: rgba(7, 231, 145, 0.384);
+          height:13px;
+        border-bottom:rgb(9, 241, 203) 1px solid;
+      }
+      input[type='range']::-ms-fill-lower  {
+        background:#000;
+      }
+      input[type='range']::-ms-fill-upper  {
+        background:#000;
+      }
+      input[type='range']::-moz-range-track {
+        border:none;
+          background: #000;
+      }
+      input[type='range']::-webkit-slider-thumb {
+          -webkit-appearance: none !important;
+          background: radial-gradient(#FFF, #333);
+          height:11px;
+          width:11px;
+        border-radius:100%;
+        cursor:pointer;
+      }
+      input[type='range']::-moz-range-thumb {
+          background: radial-gradient(#FFF, #333);
+          height:11px;
+          width:11px;
+        border-radius:100%;
+        cursor:pointer;
+      }
+      input[type='range']::-ms-thumb {
+          -webkit-appearance: none !important;
+          background: radial-gradient(#FFF, #333);
+          height:11px;
+          width:11px;
+        border-radius:100%;
+        cursor:pointer;
+      }
+  
